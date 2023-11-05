@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import './Login.css'
+import { useNavigate, Link } from 'react-router-dom'
 
 export default function Login() {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [status, setStatus] = useState('')
@@ -23,7 +25,9 @@ export default function Login() {
         const data = await response.json()
         setStatus(data.status)
 
-        console.log(data)
+        localStorage.setItem("token", data.token)
+
+        navigate("/")
     }
 
     return (
@@ -34,6 +38,7 @@ export default function Login() {
                 <input className='Email' type="text" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                 <div className='title'><h2>Password</h2></div>
                 <input className='Password' type="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                <Link className="link" to="/register"><a style={{color: "white"}}href="">No account? Register here</a></Link>
                 <input className='Submit' type="submit" value="Login" onClick={(e) => {handleSubmit(e)}} />
             </form>
         </>
