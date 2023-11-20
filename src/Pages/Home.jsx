@@ -5,7 +5,7 @@ import './Home.css'
 const getUser = async (token) => {
     token = "Bearer " + token
 
-    const res = await fetch('http://localhost:5001', {
+    const res = await fetch('http://18.226.115.73/api', {
         method: "GET",
         headers: {
             Authorization: token

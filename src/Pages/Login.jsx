@@ -11,7 +11,7 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const response = await fetch('http://localhost:5001/api/login', {
+        const response = await fetch('http://18.226.115.73/api/login', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ export default function Login() {
                 <input className='Email' type="text" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                 <div className='title'><h2>Password</h2></div>
                 <input className='Password' type="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-                <Link className="link" to="/register"><a style={{color: "white"}}href="">No account? Register here</a></Link>
+                <Link className="link" to="/register" style={{color: "white"}}>No account? Register here</Link>
                 <input className='Submit' type="submit" value="Login" onClick={(e) => {handleSubmit(e)}} />
             </form>
         </>
